@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Loop</title>
+    <style>
+        table th {
+            padding: 10px;
+        }
+
+        table td {
+            padding: 20px;
+        }
+
+        {
+            border: 1px solid white
+        ;
+            border-collapse: collapse
+        ;
+        }
+        th, td {
+            background-color: #96D4D4;
+        }
+
+    </style>
+</head>
+<body>
+<h1>User info</h1>
+<table border="1">
+    <tr>
+        <th style="width: 15%">name</th>
+        <th style="width: 15%">lastname</th>
+        <th style="width: 5%">age</th>
+        <th style="width: 15%">email</th>
+        <th style="width: 15%">roles</th>
+
+    </tr>
+    <td th:utext="${user.getName()}">name</td>
+    <td th:utext="${user.getLastname()}">lastname</td>
+    <td th:utext="${user.getAge()}">lastname</td>
+    <td th:utext="${user.getEmail()}">email</td>
+    <td th:utext="${user.getRoles()}">roles</td>
+    </tr>
+</table>
+<br/>
+<input type="submit" value="Logout" style="width: 10%; margin-left: 10%;"
+       onclick="window.location.href = '/logout'"/>
+
+</body>
+</html>
