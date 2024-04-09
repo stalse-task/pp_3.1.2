@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Loop</title>
+    <style>
+        table th, table td {
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Create user</h1>
+
+<form th:method="POST" th:action="@{saveUser}" th:object="${user}">
+    <label for="username">Enter username: </label>
+    <input type="text" th:field="*{username}" id="username">
+    <br/>
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <label for="name">Enter last name: </label>
+    <input type="text" th:field="*{lastname}" id="last name">
+    <br/>
+    <label for="name">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age">
+    <br/>
+    <label for="name">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email">
+    <br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password">
+    <br/>
+    <input type="submit" value="Creat user"/>
+    <label>Select role:</label>
+    <input type="checkbox" th:field="*{roles}" th:value="ROLE_ADMIN" />Admin<br/>
+    <input type="checkbox" th:field="*{roles}" th:value="ROLE_USER" />User<br/>
+</form>
+
+</body>
+</html>

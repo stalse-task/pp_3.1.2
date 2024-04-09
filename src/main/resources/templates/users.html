@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Loop</title>
+    <style>
+        table th {
+            padding: 10px;
+        }
+
+        table td {
+            padding: 20px;
+        }
+
+        {
+            border: 1px solid white
+        ;
+            border-collapse: collapse
+        ;
+        }
+        th, td {
+            background-color: #96D4D4;
+        }
+
+    </style>
+</head>
+<body>
+<h1>User list</h1>
+<table border="1">
+    <tr>
+        <th style="width: 5%">id</th>
+        <th style="width: 15%">username</th>
+        <th style="width: 15%">name</th>
+        <th style="width: 15%">lastname</th>
+        <th style="width: 5%">age</th>
+        <th style="width: 15%">email</th>
+        <th style="width: 5%">password</th>
+        <th style="width: 15%">roles</th>
+        <th style="width: 15%">operation</th>
+
+    </tr>
+
+    <tr th:each="user: ${allUser}" th:action="@{getAllUser}">
+
+        <td th:utext="${user.getId()}">id</td>
+        <td th:utext="${user.getUsername()}">username</td>
+        <td th:utext="${user.getName()}">name</td>
+        <td th:utext="${user.getLastname()}">lastname</td>
+        <td th:utext="${user.getAge()}">lastname</td>
+        <td th:utext="${user.getEmail()}">email</td>
+        <td th:utext="${user.getPassword()}">id</td>
+        <td th:utext="${user.getRoles()}">roles</td>
+        <td>
+            <button
+                    th:href="@{/admin/editUser(id=${user.getId()})}"
+                    onclick="window.location.href=(this.getAttribute('href'))">Update
+            </button>
+            <button
+                    th:href="@{/admin/deleteUser(id=${user.getId()})}"
+                    onclick="window.location.href=(this.getAttribute('href'))">Delete
+            </button>
+        </td>
+
+    </tr>
+</table>
+<br/>
+<br/>
+<input type="submit" value="Creat" style="width: 10%; margin-left: 10%;"
+       onclick="window.location.href = '/admin/creatUser'"/>
+<input type="submit" value="Logout" style="width: 10%; margin-left: 10%;"
+       onclick="window.location.href = '/logout'"/>
+
+</body>
+</html>
