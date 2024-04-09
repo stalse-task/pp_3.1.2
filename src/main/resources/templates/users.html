@@ -40,7 +40,7 @@
 
     </tr>
 
-    <tr th:each="user: ${allUser}">
+    <tr th:each="user: ${allUser}" th:action="@{getAllUser}">
 
         <td th:utext="${user.getId()}">id</td>
         <td th:utext="${user.getUsername()}">username</td>

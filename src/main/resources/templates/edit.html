@@ -13,8 +13,8 @@
 <body>
 <h1>Update user</h1>
 
-<form th:method="POST" th:action="@{/admin/userForUpdate(id=${user.getId()})}" th:object="${user}">
-    
+<form th:method="POST" th:action="@{userForUpdate(id=${user.getId()})}" th:object="${user}">
+
     <input type="hidden" th:field="*{id}" id="id">
 
     <label for="name">Enter username: </label>

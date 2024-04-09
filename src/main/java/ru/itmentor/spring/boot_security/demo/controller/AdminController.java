@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.itmentor.spring.boot_security.demo.model.User;
 import ru.itmentor.spring.boot_security.demo.service.UserService;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
@@ -22,49 +22,48 @@ public class AdminController {
     }
 
 
-
-    @GetMapping("/")
+    @GetMapping("/index")
     public String home() {
         return "index";
     }
 
 
-    @GetMapping(value = "/admin")
+    @GetMapping(value = "")
     public String getAllUser(Model model) {
         List<User> userList = userService.getAllUsers();
         model.addAttribute("allUser", userList);
         return "users";
     }
 
-    @GetMapping(value = "/admin/creatUser")
+    @GetMapping(value = "/creatUser")
     public String creatUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "user-info";
     }
 
-    @PostMapping(value = "/admin/saveUser")
+    @PostMapping(value = "/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
 
-    @RequestMapping(value = "/admin/editUser")
+    @RequestMapping(value = "/editUser")
     public String editUser(@RequestParam("id") Long id, Model model) {
         User user = userService.getUser(id);
         model.addAttribute("user", user);
         return "edit";
     }
 
-    @PostMapping(value = "/admin/userForUpdate")
+    @PostMapping(value = "/userForUpdate")
     public String userForUpdate(@ModelAttribute("user") User user, @RequestParam("id") Long id) {
         userService.userForUpdate(user, id);
         return "redirect:/admin";
     }
 
 
-    @RequestMapping(value = "/admin/deleteUser")
+    @RequestMapping(value = "/deleteUser")
     public String deleteUser(@RequestParam("id") Long id) {
         userService.deleteUser(id);
         return "redirect:/admin";
