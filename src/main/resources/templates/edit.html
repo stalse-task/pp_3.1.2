@@ -11,11 +11,10 @@
     </style>
 </head>
 <body>
-<h1>Create user</h1>
+<h1>Update user</h1>
 
-<form th:method="POST" th:action="@{/admin/updateUser(id=${user.getId()})}" th:object="${user}">
-
-    <label for="id">Id</label>
+<form th:method="POST" th:action="@{/admin/userForUpdate(id=${user.getId()})}" th:object="${user}">
+    
     <input type="hidden" th:field="*{id}" id="id">
 
     <label for="name">Enter username: </label>

@@ -15,7 +15,7 @@ public interface UserDao {
 
     void editUser(Long id, User user);
 
-    void updateUser(User user, Long id);
+    void userForUpdate(User user, Long id);
 
     User getUser(Long id);
 
